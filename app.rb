@@ -1,5 +1,6 @@
 require "rubygems"
 require "sinatra"
+require "sinatra/reloader" if development?
 require "erb"
 
 before do
@@ -25,4 +26,8 @@ end
 get "/echo/?:mesg?" do |m|
   @message = m;
   erb :echo
+end
+
+get "/env" do
+  settings.environment.to_s
 end
